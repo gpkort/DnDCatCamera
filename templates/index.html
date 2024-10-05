@@ -9,7 +9,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <title>Naughty Cat Cam</title>
+    <script>
+        function moveUp() {
+            fetch('/move_up')
+                .then(response => response.text())
+                .then(data => console.log(`recv: ${data}`));
+        }
+        function moveDown() {
+            fetch('/move_down')
+                .then(response => response.text())
+                .then(data => console.log(`recv: ${data}`));
+        }
+        function moveLeft() {
+            fetch('/move_left')
+                .then(response => response.text())
+                .then(data => console.log(`recv: ${data}`));
+        }
+
+        function moveRight() {
+            fetch('/move_right')
+                .then(response => response.text())
+                .then(data => console.log(`recv: ${data}`));
+        }
+        </script>
+
+    <title>RoboCam</title>
 </head>
 <body>
 <div class="container">
@@ -17,6 +41,16 @@
         <div class="col-lg-8  offset-lg-2">
             <h3 class="mt-5">Live Streaming</h3>
             <img src="{{ url_for('video_feed') }}" width="100%">
+        </div>
+        <div class="col-lg-2 offset-lg-5 mt-3">
+            <div class="d-flex flex-column align-items-center">
+            <button type="button" class="btn btn-primary mb-2" onclick="moveUp()">Up</button>
+            <div class="d-flex justify-content-between w-100">
+                <button type="button" class="btn btn-primary mr-2" onclick="moveLeft()">Left</button>
+                <button type="button" class="btn btn-primary ml-2" onclick="moveRight()">Right</button>
+            </div>
+            <button type="button" class="btn btn-primary mt-2" onclick="moveDown()">Down</button>
+            </div>
         </div>
     </div>
 </div>
