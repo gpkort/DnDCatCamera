@@ -1,6 +1,5 @@
 from flask import Flask, render_template, Response, redirect
-import cv2
-from config.parser import CameraServerConfig
+# import cv2
 from cam_server.ws_messages import SocketMessage, ServoMessagePC9686, CameraServoCommand
 from cam_server.constants import HORZIONTAL_SERVO, VERTICAL_SERVO
 import websockets
@@ -9,7 +8,6 @@ from json import dumps
 import base64
 from io import BytesIO
 from PIL import Image
-from time import sleep
 
 IP = ""
 PORT = 0
@@ -92,28 +90,7 @@ def index():
     return render_template('index.html')
 
 
-if __name__ == '__main__':
-    
-    cs_config = CameraServerConfig("camserver.ini")
-    
-    if cs_config.server is not None:
-        IP = cs_config.server.host
-        PORT = cs_config.server.port
-        URI = f"ws://{IP}:{PORT}"
-        print(f"Server info: {IP}:{PORT}")
-        print(f"URI: {URI}")
-        app.run(debug=False, host="0.0.0.0")
-    else:
-        print("No server info found in config file")
-        exit(1)
-    
+if __name__ == '__main__':    
+    app.run(debug=False, host="0.0.0.0")
    
 
-# Decode the Base64 string to get the original byte data
-# byte_data = base64.b64decode(base64_encoded_data)
-#
-# # Convert the byte data into a JPEG byte array
-# image = Image.open(BytesIO(byte_data))
-# jpeg_byte_array = BytesIO()
-# image.save(jpeg_byte_array, format='JPEG')
-# jpeg_byte_array = jpeg_byte_array.getvalue()
