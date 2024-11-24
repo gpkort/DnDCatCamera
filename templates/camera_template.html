@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>        
+        <title>Camera {{camera_name}}</title>
+         <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+        <script src="{{ url_for('static', filename='buttons.js') }}"></script>
+        <script>
+            
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <img id="videoFeed" src="{{ url_for('video_feed') }}">
+            <audio id="audio" controls autoplay>
+                <source src="{{ url_for('audio_feed') }}" type="audio/mpeg">
+            </audio>
+           
+            <button class="btnUP" onclick="moveUp()">^</button>
+            <button class="btnDOWN" onclick="moveDown()">v</button>
+            <button class="btnLEFT" onclick="moveLeft()">></button>
+            <button class="btnRIGHT" onclick="moveRight()"><</button>
+        </div>
+    </body>
+</html>

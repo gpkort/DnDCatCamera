@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+    <head>        
+        <title>Camera Template</title>
+         <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+        <script>
+            function move_camera(direction, camera_name) {
+                console.log(`move_camera: ${direction}, ${camera_name}`);
+                fetch(`/move_camera?direction=${direction}&cam=${camera_name}`)
+                    .then(response => response.text())
+                    .then(data => console.log(`recv: ${data}`));
+            }
+            function moveUp() {
+                console.log("moveUp");
+                fetch('/move_up')
+                    .then(response => response.text())
+                    .then(data => console.log(`recv: ${data}`));
+            }
+            function moveDown() {
+                console.log("moveDown");
+                fetch('/move_down')
+                    .then(response => response.text())
+                    .then(data => console.log(`recv: ${data}`));
+            }
+            function moveLeft() {
+                console.log("moveLeft");
+                fetch('/move_left')
+                    .then(response => response.text())
+                    .then(data => console.log(`recv: ${data}`));
+            }
+    
+            function moveRight() {
+                console.log("moveRight");
+                fetch('/move_right')
+                    .then(response => response.text())
+                    .then(data => console.log(`recv: ${data}`));
+            }           
+                    
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <img id="videoFeed" src="{{ url_for('video_feed') }}?cam={{camera_name}}">
+            <audio id="audio" controls autoplay>
+                <source src="{{ url_for('audio_feed') }}?cam={{camera_name}}" type="audio/mpeg">
+            </audio>
+            <button class="btnUP" onclick="move_camera('up', '{{camera_name}}')">^</button>
+            <button class="btnDOWN" onclick="move_camera('down', '{{camera_name}}')">v</button>
+            <button class="btnLEFT" onclick="move_camera('left', '{{camera_name}}')">></button>
+            <button class="btnRIGHT" onclick="move_camera('right', '{{camera_name}}')"><</button>
+        </div>
+    </body>
+</html>

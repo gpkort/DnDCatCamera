@@ -1,0 +1,65 @@
+.container {
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+}
+
+.container .miniImage {
+    width: 512 px;
+    height: 384 px;
+}
+
+.container button {
+    position: absolute;
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    
+}
+
+.container button:hover {
+    background-color: black;
+}
+
+
+.container .btnUP { 
+    top: 0%;
+    left: 50%;
+    transform: translate(0%, 0%);
+    -ms-transform: translate(0%, 0%);              
+}
+
+.container .btnDOWN {
+    top: 100%;
+    left: 50%;
+    transform: translate(0%, -100%);
+    -ms-transform: translate(0%, -100%);                
+}
+
+.container .btnLEFT {                
+    top: 50%;
+    left: 100%;
+    transform: translate(-100%, 0%);
+    -ms-transform: translate(-100%, 0%);                
+}
+
+.container .btnRIGHT {
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, 0%);
+    -ms-transform: translate(0%, 0%);
+}  
+.container .row {
+    width: 100%;
+    text-align: center; 
+  }  
